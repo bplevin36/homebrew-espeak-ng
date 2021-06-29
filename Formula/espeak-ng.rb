@@ -30,8 +30,16 @@ class EspeakNg < Formula
       "--prefix=#{prefix}",
     ]
 
-    configure_args.append "--with-pcaudiolib" if build.with?("pcaudiolib")
-    configure_args.append "--with-sonic" if build.with?("sonic")
+    if build.with?("pcaudiolib")
+      configure_args.append "--with-pcaudiolib"
+    else
+      configure_args.append "--without-pcaudiolib"
+    end
+    if build.with?("waywardgeek-sonic")
+      configure_args.append "--with-sonic"
+    else
+      configure_args.append "--without-sonic"
+    end
     configure_args.append "--with-extdict-ru" if build.with?("extdict-ru")
     configure_args.append "--with-extdict-zh" if build.with?("extdict-zh")
     configure_args.append "--with-extdict-zhy" if build.with?("extdict-zhy")
