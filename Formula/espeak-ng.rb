@@ -3,7 +3,7 @@ class EspeakNg < Formula
   homepage "https://github.com/espeak-ng/espeak-ng/"
   url "https://github.com/espeak-ng/espeak-ng/archive/1.50.tar.gz"
   head "https://github.com/espeak-ng/espeak-ng.git"
-  sha256 "5ce9f24ee662b5822a4acc45bed31425e70d7c50707b96b6c1603a335c7759fa"
+  sha256 "5ce9f24ee662b5822a4acc45bed31425e70d7c50707b96b6c1603a335c7759fa" 
 
   option "with-docs", "Build documentation"
   option "with-mbrola", "Enable MBROLA voice support"
@@ -52,8 +52,8 @@ class EspeakNg < Formula
       configure_args.append "--with-mbrola=no"
     end
 
-    # HACK: symlink CHANGELOG to avoid automake errors
-    system "ln -sf CHANGELOG.md ChangeLog.md"
+    # HACK: dummy to avoid automake errors
+    system "touch ChangeLog"
 
     system "./autogen.sh"
     system "./configure", *configure_args
