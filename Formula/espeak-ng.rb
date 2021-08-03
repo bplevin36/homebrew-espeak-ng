@@ -53,8 +53,8 @@ class EspeakNg < Formula
     end
 
     # HACK: symlink CHANGELOG to avoid automake errors
-    system "ln -sf ChangeLog.md CHANGELOG.md"
-    
+    system "ln -sf CHANGELOG.md ChangeLog.md"
+
     system "./autogen.sh"
     system "./configure", *configure_args
     system "make"
